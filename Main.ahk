@@ -57,7 +57,7 @@ MouseIsOver(WinTitle) {
 #Hotif WinActive("ahk_exe Discord.exe")
 !+f::{
 	MouseGetPos &PosX, &PosY
-	if ImageSearch(&FoundX, &FoundY, 0, 0, 1920, 1049, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\discord close.png"){
+	if ImageSearch(&FoundX, &FoundY, 0, 0, 1920, 1049, "[discord close image path]"){
 		MouseClick "left", FoundX+3, FoundY+3
 	}
 	MouseMove PosX, PosY
@@ -103,7 +103,7 @@ MouseIsOver(WinTitle) {
 } */
 
 RButton::{
-	;if ImageSearch(&FoundX, &FoundY, 260, 0, 325, 30, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae text tool active.png"){
+	;if ImageSearch(&FoundX, &FoundY, 260, 0, 325, 30, "[ae text tool active image path]"){
 	;	return
 	;}
 	SystemCursor(cmd)  ; cmd = "Show|Hide|Toggle|Reload"
@@ -176,7 +176,7 @@ XButton2:: Send "{=}"
 	Send "^+{s}"
 	Sleep 400
 	MouseClick "left", 625, 20
-	Send "C:\Users\Kaizen Tech\Documents\AE Projects\Zen Sports"
+	Send "[directory]"
 	Send "{Enter}"
 	MouseClick "left", 870, 405
 	Send "^{v}"
@@ -184,365 +184,6 @@ XButton2:: Send "{=}"
 	MouseMove 780, 473
 }
 ;zoom-in hotkeys start
-
-/* !Numpad1:: AeImageZoomAnc(1235, 226, 1050, 300)
-AeImageZoomAnc(cx, cy, rx, ry)
-{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	g1 := cx
-	var1 := g1
-	g2 := cy
-	var2 := g2
-	g3 := rx
-	var3 := g3
-	g4 := ry
-	var4 := g4
-	SendEvent "{Click}" var1 var2 "{Down}"
-	SendEvent "{Click}" var3 var4 "{UP}"
-	Sleep 300
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-} */
-
-!Numpad1::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1050 300 UP}"
-	Sleep 300
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad2::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1235 320 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad3::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1380 300 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad4::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1080 226 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad5::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 100
-	Send "{s}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad6::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1400 226 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad7::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1050 120 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "{v}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad8::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1235 115 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	Send "{v}"
-	MouseMove 1030, 460
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-!Numpad9::{
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "{s}"
-	Sleep 50
-	Send "{y}"
-	SendEvent "{Click 1235 226 Down}{Click 1390 120 UP}"
-	Sleep 300
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	Send "{v}"
-	MouseMove 1030, 460
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-;zoom-in hotkeys end
-
-^!Numpad5::{
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 100
-	Send "^{d}"
-	Sleep 300
-	MouseClick "left", 850, 70
-	Send "^{a}{Sleep 50}{Backspace}"
-	SendText "drop shadow"
-	Sleep 300
-	MouseClick "left", 874, 155, 2
-	Sleep 300
-	MouseClick "left", 580, 115
-	SendText "80"
-	Sleep 50
-	MouseClick "left", 580, 190
-	SendText "20"
-	Sleep 50
-	MouseClick "left", 580, 206
-	SendText "200"
-	Send "{Enter}"
-	Sleep 100
-	Send "^{Down}"
-	Sleep 50
-	Send "^!{x}"
-	Sleep 100
-	MouseClick "left", 850, 70
-	Send "^{a}{Sleep 50}{Backspace}"
-	SendText "gaussian blur"
-	Sleep 300
-	MouseClick "left", 880, 105, 2
-	Sleep 300
-	MouseClick "left", 580, 97
-	SendText "25"
-	Send "{Enter}"
-	Sleep 100
-	Send "^{Up}"
-	Sleep 50
-	Send "{s}"
-	Sleep 100
-	;if ImageSearch(&skfX, &skfY, 0, 405, 280, 720, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae layer no 2.png"){
-	;	MouseClick "left", skfX+23, skfY+23
-	;}
-	Send "!+{g}"
-	Sleep 100
-	MouseMove 1030, 460
-	Send "^+{NumpadSub}"
-	Sleep 100
-	Send "^+{Down}"
-	Sleep 100
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	Send "^+{NumpadAdd 3}"
-}
-;position hotkeys start
-!Numpad0::{
-	MouseGetPos &Xpos, &Ypos
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "+{d 2}"
-	Sleep 50
-	MouseClick "left", 1520, 87
-	Sleep 50
-	MouseClick "left", 1622, 91
-	Sleep 50
-	MouseMove Xpos, YPos
-	Send "+{Up}+{Left}"
-	Sleep 50
-	Send "!+{p}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	MouseGetPos &Xpos, &Ypos
-	Sleep 50
-	MouseClick "left", 1591, 88
-	Sleep 50
-	Send "+{Right 2}"
-	MouseMove Xpos, YPos
-}
-!NumpadDot::{
-	MouseGetPos &Xpos, &Ypos
-	Send "^!{x}"
-	Sleep 50
-	Send "^!{a}"
-	Sleep 50
-	Send "{q}"
-	Sleep 50
-	Send "+{d}"
-	Sleep 50
-	MouseClick "left", 1625, 87
-	Sleep 50
-	MouseMove Xpos, Ypos
-	Send "{Up 2}"
-	Sleep 50
-	Send "!+{p}"
-	ToolTip "Waiting for {w}"
-	KeyWait "w", "D"
-	ToolTip
-	MouseGetPos &Xpos, &Ypos
-	Sleep 50
-	MouseClick "left", 1691, 92
-	Sleep 50
-	Send "+{Down}"
-	Sleep 50
-	MouseMove Xpos, Ypos
-}
-;position hotkeys end
-;*
-
 
 #Hotif
 
@@ -619,135 +260,6 @@ AppsKey & d:: Send "{Right}"
 !+;:: SendInput FormatTime(A_Now, "dd-MM-yyyy")
 ^!+;:: SendInput FormatTime(A_Now, "hh:mm tt")
 
-^!+\::{
-	FillDates(&date)
-}
-FillDates(&date)
-{
-	i := 1
-	while(i < 32)
-	{
-		MouseClick "left", 226, 488, 2
-		Sleep 500
-		if(i < 10)
-		{
-			SendText "0"
-		}
-		Send i
-		Sleep 100
-		SendInput FormatTime(A_Now, "-MM-yyyy")
-		Sleep 300
-		Send "{Alt down}{Down}{Alt up}"
-		i++
-		Sleep 300
-	}
-}
-F1:: Run "C:\Users\Kaizen Tech\Documents"
-F3:: Run "C:\Users\Kaizen Tech\Documents\Script Voices\Zen Sports"
-F4:: Run "C:\Users\Kaizen Tech\Videos\Zen Sports"
-F8:: Run "C:\Users\Kaizen Tech\Documents\Contents\Zen Sports"
-;F9:: Run "C:\Users\Kaizen Tech\Documents\Photoshop"
-;F10:: Run "C:\Users\Kaizen Tech\Documents\Illustrator"
-
-^+Insert::{
-	Send "{n}"
-	Sleep 200
-	Send "{Home}"
-	SendInput FormatTime(A_Now, "dd-MM-yyyy")
-	SendInput " (Rana) "
-	Sleep 100
-	Send "{Shift down}{End}{Shift up}{Shift down}{Left 4}{Shift up}^c"
-	Send "{Enter}"
-	Sleep 300
-	MouseMove 8, 1057
-	Sleep 50
-	Send "{a}"
-	Sleep 500
-	Send "{Down}"
-	Send "{Enter}"
-	WinWait "Save As"
-	Sleep 100
-	MouseMove 636, 22
-	Sleep 100
-	MouseClick
-	SendText "C:\Users\Kaizen Tech\Downloads"
-	Send "{Enter}"
-	MouseMove 776, 460
-	MouseClick
-	Sleep 3000
-	Send "!{6}"
-	WinWait "Adobe Audition"
-	Run "C:\Users\Kaizen Tech\Downloads\"
-	WinWait "Downloads"
-	Sleep 50
-	WinMove 30, 50
-	Send "^{r}"
-	Sleep 300
-	SendEvent "{Click 300 165 Down}{Click 1300 650 UP}"
-	Sleep 300
-	Send "!{6}"
-	Sleep 300
-	Send "^!+{j}"
-	Sleep 500
-	Send "{Enter}"
-	Sleep 1000
-	Send "^+{m}"
-	Sleep 500
-	Send "^{v}"
-	Send "{Tab 3}{Enter}"
-	WinWait "Save As"
-	WinMove 8, 110
-	MouseClick "left", 630, 20
-	Sleep 100
-	SendText "C:\Users\Kaizen Tech\Documents\Script Voices\Zen Sports\"
-	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	MouseClick "left", 780, 475
-	Sleep 500
-	Send "{Tab 4}"
-	Sleep 100
-	Send "{Enter}"
-}
-!Enter::{
-	MouseClick "left", 822, 148
-	Sleep 1000	
-	MouseClick "left", 815, 215
-	Sleep 500
-	MouseClick "left", 470, 260
-	Sleep 100
-	MouseClick "left", 470, 330
-}
-^!Enter::{
-	Send "{Enter}"
-	Sleep 1000
-	MouseClick "left", 413, 213
-	Sleep 1000	
-	MouseClick "left", 815, 215
-	Sleep 300
-	MouseClick "left", 470, 260
-	Sleep 100
-	MouseClick "left", 470, 330
-}
-!+/::{
-	MouseMove 700, 120
-	Sleep 300
-	MouseClick
-}
-!/::{
-	MouseClick "left", 705, 145
-	Send "^{a}"
-	Send "{Backspace}"
-}
-^!+c::{
-	Send "^{2}"
-	Sleep 100
-	SendEvent "{Click 103 1020 Down}"
-	Sleep 100
-	SendEvent "{Click 1150 800 UP}"
-}
-;*
-
 ;/ Window Switchers
 
 !NumpadEnter:: Run "C:\Program Files\AutoHotkey\UX\WindowSpy.ahk"
@@ -758,9 +270,6 @@ F8:: Run "C:\Users\Kaizen Tech\Documents\Contents\Zen Sports"
 !3:: WindowSwitcher("Adobe Premiere Pro.exe", "C:\Program Files\Adobe\Adobe Premiere Pro 2023\Adobe Premiere Pro.exe")
 !5:: WindowSwitcher("Photoshop.exe", "C:\Program Files\Adobe\Adobe Photoshop 2023\Photoshop.exe")
 !6:: WindowSwitcher("Adobe Audition.exe", "C:\Program Files\Adobe\Adobe Audition 2023\Adobe Audition.exe")
-!F1:: WindowSwitcher("Discord.exe", "C:\Users\Kaizen Tech\AppData\Local\Discord\app-1.0.9016\Discord.exe")
-!F2:: WindowSwitcher("Telegram.exe", "C:\Users\Kaizen Tech\AppData\Roaming\Telegram Desktop\Telegram.exe")
-!F3:: WindowSwitcher("ClickUp.exe", "C:\Users\Kaizen Tech\AppData\Local\Programs\desktop\ClickUp.exe")
 !1:: WindowSwitcher("ApplicationFrameHost.exe", "Whatsapp")
 
 WindowSwitcher(ahke, lpath)
@@ -858,26 +367,6 @@ WindowSwitcher(ahke, lpath)
 }
 ;*
 
-!e::{
-	WinActivate "ahk_exe AfterFX.exe"
-	dir_input := "C:\Users\Kaizen Tech\Documents\Contents\Zen Sports\উড়ছে সৌদির টেকা পাখি"
-	if WinExist(dir_input){
-		WinSetTransparent 1, dir_input
-		WinActivate
-	}
-	else {
-		Run dir_input
-		WinWait dir_input
-		WinMove 200, 150 
-		WinSetTransparent 1, dir_input
-	}
-	Send "^{r}"
-	SendEvent "{Click 226, 173 Down}"
-	SendEvent "{Click 720, 720 Up}"
-	WinSetTransparent 255, dir_input
-}
-
-
 /* a:: {
  Global b
  b := 3
@@ -886,16 +375,6 @@ WindowSwitcher(ahke, lpath)
 
 c::MsgBox b ?? 'Not assigned' */
 
-/*
-!+m::
-{
-	while(1)
-	{
-		Run "C:\Users\Kaizen Tech\Desktop\Screen OFF.lnk"
-		Sleep 500
-	}
-}
-*/
 
 /* !Tab::
 {
