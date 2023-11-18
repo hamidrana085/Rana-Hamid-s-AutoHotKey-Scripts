@@ -1,5 +1,4 @@
 ﻿#SingleInstance force
-;put the ideas here
 ^!+q:: Reload
 ^!+e:: Edit
 ^!+p:: ExitApp
