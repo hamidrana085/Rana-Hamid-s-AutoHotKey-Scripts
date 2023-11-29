@@ -4,16 +4,24 @@
 ^!+p:: ExitApp
 
 ;/ Premiere Pro
-#Hotif WinActive("ahk_exe Adobe Premiere Pro.exe")
-XButton1:: Send "{-}"
-XButton2:: Send "{=}"
+#HotIf WinActive("ahk_exe Adobe Premiere Pro.exe")
 !WheelUp::Send "!{WheelUp}"
 !WheelDown:: Send "!{WheelDown}"
 RButton:: Send "{s}"
 MButton:: Send "{RButton}"
-+s:: Send "+{Left 15}{Space}"
-!a:: Send "!{Left}"
-!d:: Send "!{Right}"
+#+Left:: Send "{q}"
+^w:: Send "{e}"
+XButton1:: Send "{-}"
+XButton2:: Send "{=}"
+Joy4:: Send "{Space}"
+Joy3:: Send "{w}"
+Joy2:: Send "^{z}"
+Joy5:: Send "{q}"
+Joy6:: Send "{e}"
+Joy1:: Send "{s}"
+Joy7:: Send "{r}"
+Joy8:: Send "+{Left 30}{Space}"
+s:: Send "+{Left 30}{Space}"
 ;*
 
 /* ;/ Volume Control with TaskBar
