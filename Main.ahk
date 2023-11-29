@@ -198,17 +198,6 @@ F7:: Send "{Media_Play_Pause}"
 ^!k:: Send "^{Backspace}"
 ^!Backspace:: Send "^{Backspace}"
 
->!a:: Send "1"
->!s:: Send "2"
->!d:: Send "3"
->!f:: Send "4"
->!g:: Send "5"
->!h:: Send "6"
->!j:: Send "7"
->!k:: Send "8"
->!l:: Send "9"
->!;:: Send "0"
-
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 200
 A_MenuMaskKey := "vkE8"
@@ -262,14 +251,12 @@ AppsKey & d:: Send "{Right}"
 ;/ Window Switchers
 
 !NumpadEnter:: Run "C:\Program Files\AutoHotkey\UX\WindowSpy.ahk"
-
 ;!1:: WindowSwitcher("brave.exe", "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe")
 !2:: WindowSwitcher("chrome.exe", "chrome")
-;!1:: WindowSwitcher("AfterFX.exe", "C:\Program Files\Adobe\Adobe After Effects 2023\Support Files\AfterFX.exe")
+!1:: WindowSwitcher("AfterFX.exe", "C:\Program Files\Adobe\Adobe After Effects 2023\Support Files\AfterFX.exe")
 !3:: WindowSwitcher("Adobe Premiere Pro.exe", "C:\Program Files\Adobe\Adobe Premiere Pro 2023\Adobe Premiere Pro.exe")
 !5:: WindowSwitcher("Photoshop.exe", "C:\Program Files\Adobe\Adobe Photoshop 2023\Photoshop.exe")
 !6:: WindowSwitcher("Adobe Audition.exe", "C:\Program Files\Adobe\Adobe Audition 2023\Adobe Audition.exe")
-!1:: WindowSwitcher("ApplicationFrameHost.exe", "Whatsapp")
 
 WindowSwitcher(ahke, lpath)
 {
@@ -365,14 +352,6 @@ WindowSwitcher(ahke, lpath)
 	Send "{LButton}"
 }
 ;*
-
-/* a:: {
- Global b
- b := 3
- MsgBox b
-}
-
-c::MsgBox b ?? 'Not assigned' */
 
 
 /* !Tab::
