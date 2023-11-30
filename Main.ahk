@@ -225,6 +225,8 @@ AppsKey & w:: Send "{Up}"
 AppsKey & s:: Send "{Down}"
 AppsKey & a:: Send "{Left}"
 AppsKey & d:: Send "{Right}"
+AppsKey & q:: Send "{Home}"
+AppsKey & e:: Send "{End}"
 
 !+2:: SendText "@gmail.com"
 ;*
