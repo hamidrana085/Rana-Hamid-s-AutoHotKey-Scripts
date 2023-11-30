@@ -1,5 +1,4 @@
 # Rana-Hamid's-AutoHotKey-Scripts
-This is a Repository for some of the AutoHotKey Scripts that Rana Hamid uses personally.
 
 First of all, Now I absolutely don't have time to explain what does what. You gotta figure this out on your own. If you can't, but really really want to use my codes, knock me on Discord.
 
