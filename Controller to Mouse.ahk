@@ -1,7 +1,4 @@
-﻿#SingleInstance force
 
-^+!w:: Reload
-^!+p:: ExitApp
 
 ; Using a Controller as a Mouse
 ; https://www.autohotkey.com
