@@ -24,6 +24,121 @@ Joy8:: Send "+{Left 30}{Space}"
 s:: Send "+{Left 30}{Space}"
 ;*
 
+SystemCursor(cmd)  ; cmd = "Show|Hide|Toggle|Reload"
+{
+    static visible := true, c := Map()
+    static sys_cursors := [32512, 32513, 32514, 32515, 32516, 32642
+                         , 32643, 32644, 32645, 32646, 32648, 32649, 32650]
+    if (cmd = "Reload" or !c.Count)  ; Reload when requested or at first call.
+    {
+        for i, id in sys_cursors
+        {
+            h_cursor  := DllCall("LoadCursor", "Ptr", 0, "Ptr", id)
+            h_default := DllCall("CopyImage", "Ptr", h_cursor, "UInt", 2
+                , "Int", 0, "Int", 0, "UInt", 0)
+            h_blank   := DllCall("CreateCursor", "Ptr", 0, "Int", 0, "Int", 0
+                , "Int", 32, "Int", 32
+                , "Ptr", Buffer(32*4, 0xFF)
+                , "Ptr", Buffer(32*4, 0))
+            c[id] := {default: h_default, blank: h_blank}
+        }
+    }
+    switch cmd
+    {
+    case "Show": visible := true
+    case "Hide": visible := false
+    case "Toggle": visible := !visible
+    default: return
+    }
+    for id, handles in c
+    {
+        h_cursor := DllCall("CopyImage"
+            , "Ptr", visible ? handles.default : handles.blank
+            , "UInt", 2, "Int", 0, "Int", 0, "UInt", 0)
+        DllCall("SetSystemCursor", "Ptr", h_cursor, "UInt", id)
+    }
+}
+
+; YT Playback
+
+!Numpad1::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{j}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad3::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{l}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad4::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{j 2}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad6::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{l 2}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad7::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{j 4}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad9::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{l 4}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+!Numpad0::{
+	ActiveID := WinGetID("A")
+	WinSetTransparent 1, "ahk_exe brave.exe"
+	WinActivate("ahk_exe brave.exe")
+	Send "^{1}"
+	Send "{0}"
+	Send "!{a}"
+	Sleep 100
+	WinActivate ActiveID
+	WinSetTransparent 255, "ahk_exe brave.exe"
+}
+
 /* ;/ Volume Control with TaskBar
 #Hotif MouseIsOver("ahk_class Shell_TrayWnd")
 WheelUp:: Send "{Volume_Up 2}"
@@ -74,83 +189,12 @@ MouseIsOver(WinTitle) {
 ;/ After Effects
 #Hotif WinActive("ahk_exe AfterFX.exe")
 
-/* SystemCursor(cmd)  ; cmd = "Show|Hide|Toggle|Reload"
+RButton::
 {
-    static visible := true, c := Map()
-    static sys_cursors := [32512, 32513, 32514, 32515, 32516, 32642
-                         , 32643, 32644, 32645, 32646, 32648, 32649, 32650]
-    if (cmd = "Reload" or !c.Count)  ; Reload when requested or at first call.
-    {
-        for i, id in sys_cursors
-        {
-            h_cursor  := DllCall("LoadCursor", "Ptr", 0, "Ptr", id)
-            h_default := DllCall("CopyImage", "Ptr", h_cursor, "UInt", 2
-                , "Int", 0, "Int", 0, "UInt", 0)
-            h_blank   := DllCall("CreateCursor", "Ptr", 0, "Int", 0, "Int", 0
-                , "Int", 32, "Int", 32
-                , "Ptr", Buffer(32*4, 0xFF)
-                , "Ptr", Buffer(32*4, 0))
-            c[id] := {default: h_default, blank: h_blank}
-        }
-    }
-    switch cmd
-    {
-    case "Show": visible := true
-    case "Hide": visible := false
-    case "Toggle": visible := !visible
-    default: return
-    }
-    for id, handles in c
-    {
-        h_cursor := DllCall("CopyImage"
-            , "Ptr", visible ? handles.default : handles.blank
-            , "UInt", 2, "Int", 0, "Int", 0, "UInt", 0)
-        DllCall("SetSystemCursor", "Ptr", h_cursor, "UInt", id)
-    }
-} */
-
-RButton::{
-	;if ImageSearch(&FoundX, &FoundY, 260, 0, 325, 30, "[ae text tool active image path]"){
-	;	return
-	;}
-	SystemCursor(cmd)  ; cmd = "Show|Hide|Toggle|Reload"
-{
-    static visible := true, c := Map()
-    static sys_cursors := [32512, 32513, 32514, 32515, 32516, 32642
-                         , 32643, 32644, 32645, 32646, 32648, 32649, 32650]
-    if (cmd = "Reload" or !c.Count)  ; Reload when requested or at first call.
-    {
-        for i, id in sys_cursors
-        {
-            h_cursor  := DllCall("LoadCursor", "Ptr", 0, "Ptr", id)
-            h_default := DllCall("CopyImage", "Ptr", h_cursor, "UInt", 2
-                , "Int", 0, "Int", 0, "UInt", 0)
-            h_blank   := DllCall("CreateCursor", "Ptr", 0, "Int", 0, "Int", 0
-                , "Int", 32, "Int", 32
-                , "Ptr", Buffer(32*4, 0xFF)
-                , "Ptr", Buffer(32*4, 0))
-            c[id] := {default: h_default, blank: h_blank}
-        }
-    }
-    switch cmd
-    {
-    case "Show": visible := true
-    case "Hide": visible := false
-    case "Toggle": visible := !visible
-    default: return
-    }
-    for id, handles in c
-    {
-        h_cursor := DllCall("CopyImage"
-            , "Ptr", visible ? handles.default : handles.blank
-            , "UInt", 2, "Int", 0, "Int", 0, "UInt", 0)
-        DllCall("SetSystemCursor", "Ptr", h_cursor, "UInt", id)
-    }
-}
 	MouseGetPos &PosX, &PosY
-	if (PosX > 600 and PosY > 445){
+	if (PosX > 540 and PosY > 445){
 		SystemCursor("Hide")
-		MouseClick "left", PosX, 460
+		MouseClick "left", PosX, 720
 		Sleep 50
 		MouseMove PosX, PosY, 0
 		SystemCursor("Show")
@@ -200,11 +244,31 @@ XButton2:: Send "{=}"
 
 ScrollLock:: Send "{Volume_Down 2}"
 Pause:: Send "{Volume_Up 2}"
-F7:: Send "{Media_Play_Pause}"
+F7::
+{
+	if WinActive("ahk_exe brave.exe")
+	{
+		Send "{Media_Play_Pause}"
+	}
+	else
+	{
+		MouseGetPos ,, &Win
+		WinSetTransparent 1, "ahk_exe brave.exe"
+		WinActivate "ahk_exe brave.exe"
+		Send "{Media_Play_Pause}"
+		WinActivate Win
+		WinSetTransparent 255, "ahk_exe brave.exe"
+	}
+}
 
 !k:: Send "{Backspace}"
 ^!k:: Send "^{Backspace}"
 ^!Backspace:: Send "^{Backspace}"
+!+e::
+{
+	Send "{Home}"
+	Send "+{End}"
+}
 
 A_HotkeyInterval := 2000
 A_MaxHotkeysPerInterval := 200
@@ -221,12 +285,72 @@ A_MenuMaskKey := "vkE8"
 CapsLock:: Send "{Ctrl down}{Alt down}{v}{Alt up}{Ctrl up}"
 !CapsLock:: Send "{Ctrl down}{Alt down}{b}{Alt up}{Ctrl up}"
 
-AppsKey & w:: Send "{Up}"
-AppsKey & s:: Send "{Down}"
-AppsKey & a:: Send "{Left}"
-AppsKey & d:: Send "{Right}"
-AppsKey & q:: Send "{Home}"
-AppsKey & e:: Send "{End}"
+AppsKey & w::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{Up}"
+	}
+	Else
+	{
+		Send "{Up}"
+	}
+}
+AppsKey & s::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{Down}"
+	}
+	Else
+	{
+		Send "{Down}"
+	}
+}
+AppsKey & a::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{Left}"
+	}
+	Else
+	{
+		Send "{Left}"
+	}
+}
+AppsKey & d::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{Right}"
+	}
+	Else
+	{
+		Send "{Right}"
+	}
+}
+AppsKey & q::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{Home}"
+	}
+	Else
+	{
+		Send "{Home}"
+	}
+}
+AppsKey & e::
+{
+	If GetKeyState("Shift")
+	{
+		Send "+{End}"
+	}
+	Else
+	{
+		Send "{End}"
+	}
+}
 
 !+2:: SendText "@gmail.com"
 ;*
@@ -248,13 +372,18 @@ AppsKey & e:: Send "{End}"
 	WinWait "Save As"
 	SendEvent "{Enter}"
 }
-/* ~LControl up::{
-    if KeyWait("LControl", "D T0.3") {
-        WinActivate "ahk_exe explorer.exe"
+` up::{
+    if KeyWait("``", "D T0.2") {
+        ;WinActivate "ahk_exe explorer.exe"
         Run "explorer"
     }
-    KeyWait("LControl")
-} */
+	Else
+	{
+		Send "{``}"
+	}
+    KeyWait("``")
+}
+
 !+;:: SendInput FormatTime(A_Now, "dd-MM-yyyy")
 ^!+;:: SendInput FormatTime(A_Now, "hh:mm tt")
 
@@ -363,10 +492,109 @@ WindowSwitcher(ahke, lpath)
 }
 ;*
 
-
 /* !Tab::
 {
 	Send "!{Tab}"
 	Send "{Ctrl down}{Alt down}{v}{Alt up}{Ctrl up}"
 }
  */
+
+;/ FL Studio
+#Hotif WinActive("ahk_exe FL64.exe")
++WheelUp:: Send "{WheelLeft}"
++WheelDown:: Send "{WheelRight}"
+!+WheelUp:: Send "+{WheelUp}"
+!+WheelDown:: Send "+{WheelDown}"
+XButton1::
+{
+	MouseGetPos &PosX, &PosY
+	if (PosX > 250 and PosY > 80){
+		SystemCursor("Hide")
+		MouseClick "left", PosX, 140
+		MouseMove PosX, PosY, 0
+		SystemCursor("Show")
+	}
+	else Send "{RButton}"
+}
+;*
+
+;/ Browsers
+#Hotif WinActive("ahk_exe chrome.exe")
+
+^+n::{
+	Send "^+{n}"
+	;Sleep 50
+	SendText "google.com"
+	Send "{Enter}"
+}
+^!+n::{
+	Send "^+{n}"
+	;Sleep 50
+	SendText "youtube.com"
+	Send "{Enter}"
+}
+!t::
+{
+	Send "^{t}"
+	Sleep 100
+	SendText "https://translate.google.com/"
+	Send "{Enter}"
+}
+
+RButton & WheelUp::Send "{WheelUp 4}"
+RButton & WheelDown:: Send "{WheelDown 4}"
+XButton1 & WheelUp:: Send "{WheelUp 8}"
+XButton1 & WheelDown:: Send "{WheelDown 8}"
+XButton2 & WheelUp:: Send "{WheelUp 16}"
+XButton2 & WheelDown:: Send "{WheelDown 16}"
+MButton & RButton:: Send "+{MButton}"
+MButton:: Send "{MButton}"
+RButton:: Send "{RButton}"
+XButton1:: Send "{XButton1}"
+XButton2:: Send "{XButton2}"
+RButton & XButton2:: Send "^{Tab}"
+RButton & XButton1:: Send "^+{Tab}"
+MButton & XButton1:: Send "^{w}"
+
+#Hotif WinActive("ahk_exe brave.exe")
+^+n::{
+	Send "^+{n}"
+	;Sleep 50
+	SendText "google.com"
+	Send "{Enter}"
+}
+^!+n::{
+	Send "^+{n}"
+	;Sleep 50
+	SendText "youtube.com"
+	Send "{Enter}"
+}
+!t::
+{
+	Send "^{t}"
+	Sleep 100
+	SendText "https://translate.google.com/"
+	Send "{Enter}"
+}
+RButton & WheelUp::Send "{WheelUp 4}"
+RButton & WheelDown:: Send "{WheelDown 4}"
+XButton1 & WheelUp:: Send "{WheelUp 8}"
+XButton1 & WheelDown:: Send "{WheelDown 8}"
+XButton2 & WheelUp:: Send "{WheelUp 16}"
+XButton2 & WheelDown:: Send "{WheelDown 16}"
+MButton & RButton:: Send "+{MButton}"
+MButton:: Send "{MButton}"
+RButton:: Send "{RButton}"
+XButton1:: Send "{XButton1}"
+XButton2:: Send "{XButton2}"
+RButton & XButton2:: Send "^{Tab}"
+RButton & XButton1:: Send "^+{Tab}"
+MButton & XButton1:: Send "^{w}"
+RButton & LButton::
+{
+	Send "{RButton}"
+	Sleep 50
+	Send "{Down 4}"
+	Send "{Enter}"
+}
+;*
