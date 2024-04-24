@@ -188,14 +188,23 @@ MouseIsOver(WinTitle) {
 
 ;/ After Effects
 #Hotif WinActive("ahk_exe AfterFX.exe")
-
+global FX := ""
+global FY := ""
 RButton::
 {
+	if (FX == "" and FY == "") {
+		if ImageSearch(&FoundX, &FoundY, 0, 0, 1920, 1080, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae graph editor inactive.png") or ImageSearch(&FoundX, &FoundY, 0, 0, 1920, 1080, "C:\Users\Kaizen Tech\Pictures\AHK ImageSearch\ae graph editor active.png") {
+		global FX := FoundX
+		global FY := FoundY
+		Tooltip "Value Stored"
+		SetTimer () => ToolTip(), -1500
+		}
+	}
 	MouseGetPos &PosX, &PosY
-	if (PosX > 540 and PosY > 445){
+	if (PosX > FX+40 and PosY > FY){
 		SystemCursor("Hide")
-		MouseClick "left", PosX, 720
-		Sleep 50
+		MouseClick "left", PosX, FY+22
+		Sleep 10
 		MouseMove PosX, PosY, 0
 		SystemCursor("Show")
 	}
