@@ -199,6 +199,7 @@ RButton::
 		Tooltip "Value Stored"
 		SetTimer () => ToolTip(), -1500
 		}
+		else return
 	}
 	MouseGetPos &PosX, &PosY
 	if (PosX > FX+40 and PosY > FY){
