@@ -444,62 +444,23 @@ WindowSwitcher(ahke, lpath)
 */
 
 ;/ Emoji
-^+1::{
+#Hotif
+Emoji(name)
+{
 	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "eyes"
-	Sleep 100
+	Sleep 200
+	Send name
+	Sleep 200
 	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
-}
-
-^+2::{
-	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "slightly smiling face"
 	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
+	WinClose "ahk_class ApplicationFrameWindow"
 }
-
-^+3::{
-	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "drooling face"
-	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
-}
-^+4::{
-	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "hot beverage"
-	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
-}
-^+5::{
-	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "thumbs up"
-	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
-}
-^+6::{
-	Send "{LWin down}{.}{LWin up}"
-	Sleep 300
-	Send "check mark button"
-	Sleep 100
-	Send "{Enter}"
-	Sleep 300
-	Send "{LButton}"
-}
+^+1:: SendText "☭"
+^+2:: SendText "👀"
+^+3:: SendText "🙂"
+^+4:: SendText "🤤"
+^+5:: SendText "☕"
+^+6:: SendText "🗿"
 ;*
 
 /* !Tab::
