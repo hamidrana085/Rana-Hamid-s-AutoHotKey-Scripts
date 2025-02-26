@@ -188,11 +188,6 @@ WindowSwitcher(ahke, lpath)
 }	
 ;*
 
-
-
-
-
-
 #HotIf WinActive("ahk_exe Adobe Premiere Pro.exe")
 
 RButton:: Send "{s}"
@@ -226,6 +221,27 @@ Joy8:: Send "+{Left 10}{Space}"
 	}
 	MouseMove Xpos, Ypos
 	SystemCursor("Show")
+}
+
+^Tab::
+{
+	if ImageSearch(&Fx, &Fy, 0, 0, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence.png") {
+		MouseGetPos &PosX, &PosY
+		SystemCursor("Hide")
+		MouseClick "left", Fx+60, Fy+10
+		MouseMove PosX, PosY
+		SystemCursor("Show")
+	}
+}
+^+Tab::
+{
+	if ImageSearch(&Fx, &Fy, 0, 0, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence close.png") {
+		MouseGetPos &PosX, &PosY
+		SystemCursor("Hide")
+		MouseClick "left", Fx-60, Fy+10
+		MouseMove PosX, PosY
+		SystemCursor("Show")
+	}
 }
 
 ;*
