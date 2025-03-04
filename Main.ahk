@@ -225,7 +225,7 @@ Joy8:: Send "+{Left 10}{Space}"
 
 ^Tab::
 {
-	if ImageSearch(&Fx, &Fy, 0, 0, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence.png") {
+	if ImageSearch(&Fx, &Fy, 0, 540, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence.png") {
 		MouseGetPos &PosX, &PosY
 		SystemCursor("Hide")
 		MouseClick "left", Fx+60, Fy+10
@@ -235,7 +235,7 @@ Joy8:: Send "+{Left 10}{Space}"
 }
 ^+Tab::
 {
-	if ImageSearch(&Fx, &Fy, 0, 0, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence close.png") {
+	if ImageSearch(&Fx, &Fy, 0, 540, 1920, 1080, "C:\Users\Rana Hamid\Pictures\AHK ImageSearch\premiere pro active sequence close.png") {
 		MouseGetPos &PosX, &PosY
 		SystemCursor("Hide")
 		MouseClick "left", Fx-60, Fy+10
