@@ -95,7 +95,6 @@ Emoji(name)
 	WinClose "ahk_class ApplicationFrameWindow"
 }
 
->!w::
 AppsKey & w::
 {
 	If GetKeyState("Shift")
@@ -107,7 +106,6 @@ AppsKey & w::
 		Send "{Up}"
 	}
 }
->!s::
 AppsKey & s::
 {
 	If GetKeyState("Shift")
@@ -119,7 +117,6 @@ AppsKey & s::
 		Send "{Down}"
 	}
 }
->!a::
 AppsKey & a::
 {
 	If GetKeyState("Shift")
@@ -131,7 +128,6 @@ AppsKey & a::
 		Send "{Left}"
 	}
 }
->!d::
 AppsKey & d::
 {
 	If GetKeyState("Shift")
@@ -145,7 +141,7 @@ AppsKey & d::
 }
 >!+q:: Send "+{Home}"
 >!+e:: Send "+{End}"
->!q::
+
 AppsKey & q::
 {
 	If GetKeyState("Shift")
@@ -157,7 +153,7 @@ AppsKey & q::
 		Send "{Home}"
 	}
 }
->!e::
+
 AppsKey & e::
 {
 	If GetKeyState("Shift")
@@ -185,7 +181,16 @@ WindowSwitcher(ahke, lpath)
 	if WinExist("ahk_exe" ahke)
 	WinActivate
 	else Run lpath
-}	
+}
+
+^!+b::
+{
+	ActiveWindow := WinGetTitle("A")
+	Run "C:\Program Files (x86)\Ananda Computers\Bijoy_Bayanno\BijoyBayanno.exe"
+	Sleep 4000
+	Run "C:\Users\toro\Desktop\Main AHK.ahk"
+	WinActivate(ActiveWindow)
+}
 ;*
 
 #HotIf WinActive("ahk_exe Adobe Premiere Pro.exe")
@@ -437,19 +442,20 @@ RButton & WheelDown:: Send "{Right}"
 	SendText "youtube.com/ "
 	Send "{Enter}"
 }
-!+s::
-{
-	MouseGetPos &Px, &Py
-	MouseClick "left", 1319, 820
-	MouseMove Px, Py
-}
-
 !+z::
 {
 	MouseGetPos &Px, &Py
 	MouseClick "left", 808, 202
 	Sleep 100
-	MouseClick "left", 947, 264
+	MouseClick "left", 998, 268
+	MouseMove Px, Py
+}
+!+a::
+{
+	MouseGetPos &Px, &Py
+	MouseClick "left", 808, 202
+	Sleep 100
+	MouseClick "left", 955, 269
 	MouseMove Px, Py
 }
 !+c::
